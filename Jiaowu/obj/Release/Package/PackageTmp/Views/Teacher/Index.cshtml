@@ -1,0 +1,77 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>教师自主管理系统</title>
+    <meta name="keywords" content="index" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="~/assets/i/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="~/assets/i/app-icon72x72@2x.png" />
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link href="~/assets/css/amazeui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/css/admin.css" /> 
+    <script language="javascript">
+    var time = new Date();
+    time.setHours(0);
+    time.setMinutes(0);
+    time.setSeconds(0);
+    function timeminding() {
+        var sec = time.getSeconds();
+        document.timeform.myclock.value = "登陆时间为:" + time.getHours() + "时" + time.getMinutes() + "分" + time.getSeconds() + "秒";
+        time.setSeconds(sec + 1); setTimeout("timeminding()", 1000);
+    }
+    </script>
+</head>
+<body onload="timeminding()">
+    <header class="am-topbar admin-header">
+        <div class="am-topbar-brand">
+            <strong>教务管理系统</strong>
+            <small>教师管理模块</small>
+        </div>
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+                <li><a href="/Teacher/PasChange" target="c"><span class="am-icon-user"></span> 修改密码</a></li>
+                <li><a href="/Home/Index"><span class="am-icon-power-off"></span> 退出</a></li>
+            </ul>
+        </div>
+    </header>
+    <div class="am-cf admin-main">
+        <!-- sidebar start -->
+        <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+            <div class="am-offcanvas-bar admin-offcanvas-bar">
+                <ul class="am-list admin-sidebar-list">
+                    <li><a href="/Teacher/Welcome" target="c"><span class="am-icon-home"></span> 首页</a></li>
+                    <li><a href="/Teacher/CurrentCurriculum" target="c"><span class="am-icon-table"></span> 当前课程安排</a></li>
+                    <li><a href="/Teacher/GradeInput" target="c"><span class="am-icon-pencil-square-o"></span> 成绩录入</a></li>
+                </ul>
+                <div class="am-panel am-panel-default admin-sidebar-panel">
+                    <div class="am-panel-bd">
+                        <p><span class="am-icon-bookmark"></span> 公告</p>
+                        <p>暂无公告</p>
+                    </div>
+                </div>
+                <div class="am-panel am-panel-default admin-sidebar-panel">
+                    <div class="am-panel-bd">
+                        <p><span class="am-icon-tag"></span> Tips</p>
+                        <p>登陆时效：1小时</p>
+                        <form name="timeform"><input name="myclock" border="0" sstyle="BACKGROUND-COLOR: transparent;border:1px;border-bottom-style:none;border-top-style:none;border-left-style:none;border-right-style:none;" type="text" disabled="disabled" size="20" /></form>
+                        <p>当前IP：@ViewData["Ip"];</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- sidebar end -->
+        <!-- content start -->
+        <div id="content" class="admin-content">
+            <iframe name="c" src="/Teacher/Welcome" width="100%" height="700" scrolling="auto" frameborder="0" id="c"></iframe>
+        </div>
+        <!-- content end -->
+    </div>
+</body>
+</html>

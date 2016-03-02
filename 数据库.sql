@@ -1,0 +1,426 @@
+Create table T_Pro(
+Pno varchar(7)primary key,
+Pname varchar(20),
+Xno varchar(7),
+)
+Create table T_Xro(
+Xno varchar(7)primary key,
+Xname varchar(20),
+Xzr varchar(20),
+)
+Create table T_Pclass
+(
+Classno char(6)primary key,
+Classname varchar(20),
+Pno varchar(7),
+Xno varchar(7),
+Itime int,
+);
+Create table T_Student(
+Sno char(12) primary key,
+Sname nchar(10),
+Ssex char(2),
+Bir char(8),
+Classno char(6),
+Ano char(4),
+Spswd varchar(20),
+);
+
+Create table T_Teacher(
+Tno char(8) primary key,
+Tname varchar(20),
+Pno varchar(7),
+Ano char(4),
+Tpswd varchar(20),
+);
+
+Create table T_Course(
+Cno char(8) primary key,
+Cname varchar(20),
+Tno char(8),
+Take int,
+Sem varchar(20),
+Classno char(6),
+Lim int,
+Ano char(4), 
+);
+Create table T_Sc(
+Cno char(8),
+Sno char(12), 
+Grade int,
+primary key(Cno,Sno),
+);
+Create table T_Eadm(
+Ano char(4) primary key,
+Aname varchar(20),
+Apswd varchar(20),
+);
+Create table T_Sadm(
+Sysno char(4) primary key,
+Syssnam varchar(20),
+Syspswd varchar(20),
+);
+Create table T_Status(
+CurSemester varchar(30),
+NextSemester varchar(30),
+IsChooseCourse bit,
+IsGradeInput bit,
+);
+
+create table T_Type(
+Take int,
+Tp varchar(20),
+)
+
+
+INSERT 
+INTO T_Type
+VALUES(1,'必修课');
+
+INSERT 
+INTO T_Type
+VALUES(2,'限选课');
+
+INSERT 
+INTO T_Type
+VALUES(3,'通选课');
+
+INSERT 
+INTO T_Pro
+VALUES('0001','计算机科学与技术','0001');
+INSERT 
+INTO T_Pro
+VALUES('0002','机械及其自动化','0002');
+
+INSERT 
+INTO T_Xro
+VALUES('0001','计算机','殷建');
+INSERT 
+INTO T_Xro
+VALUES('0002','机械','赵大壮');
+
+
+
+INSERT 
+INTO T_Pclass
+VALUES('000101','计算机一班','0001','0001',2014);
+INSERT 
+INTO T_Pclass
+VALUES('000102','计算机二班','0001','0001',2014);
+INSERT 
+INTO T_Pclass
+VALUES('000201','机械一班','0002','0002',2015);
+
+
+INSERT 
+INTO T_Student
+VALUES('201300010001','赵明伟','男','19940903','000101','0001','zmw123');
+INSERT 
+INTO T_Student
+VALUES('201300010002','赵悦','女','19940402','000101','0002','wzy123');
+INSERT 
+INTO T_Student
+VALUES('201300010003','张利','男','19911101','000101','0001','zz123');
+INSERT 
+INTO T_Student
+VALUES('201300010004','刘大壮','男','19950108','000101','0003','ldz123');
+INSERT 
+INTO T_Student
+VALUES('201300010005','赵科','男','19891108','000101','0001','zk123');
+INSERT 
+INTO T_Student
+VALUES('201300010006','张宇','男','19860318','000102','0001','zy123');
+INSERT 
+INTO T_Student
+VALUES('201300010007','徐立鑫','男','19880714','000102','0001','xlx123');
+INSERT 
+INTO T_Student
+VALUES('201300010008','韩峰','男','19900805','000102','0002','hf123');
+INSERT 
+INTO T_Student
+VALUES('201300010009','刘天','男','19900103','000102','0003','lt123');
+INSERT 
+INTO T_Student
+VALUES('201300010010','俞静','女','19911221','000102','0001','yj123');
+INSERT 
+INTO T_Student
+VALUES('201300020001','杨天华','男','19970104','000201','0001','yth123');
+INSERT 
+INTO T_Student
+VALUES('201300020002','朱晓鸥','女','19940515','000201','0002','zxo123');
+INSERT 
+INTO T_Student
+VALUES('201300020003','李小花','女','19890415','000201','0002','lxh123');
+INSERT 
+INTO T_Student
+VALUES('201300020004','李文瑞','女','19940108','000201','0002','lwr123');
+INSERT 
+INTO T_Student
+VALUES('201300020005','田雨','女','19930406','000201','0001','ty123');
+INSERT 
+INTO T_Student
+VALUES('201300020006','吴雪梅','女','19910708','000201','0001','wxm123');
+INSERT 
+INTO T_Student
+VALUES('201300020007','周雷军','男','19891108','000201','0002','zlj123');
+
+
+INSERT 
+INTO T_Course
+VALUES('20150101','软件工程','00010001',1,'2015年春季','000101',120,'0001');
+INSERT 
+INTO T_Course
+VALUES('20150102','编译原理','00010001',2,'2015年春季','000101',100,'0001');
+INSERT 
+INTO T_Course
+VALUES('20150203','中国化马克思主义','00010001',2,'2015年秋季','000101',80,'0001');
+INSERT 
+INTO T_Course
+VALUES('20150104','辩论修养','00010001',3,'2015年春季','000101',120,'0001');
+INSERT 
+INTO T_Course
+VALUES('20150205','中国审美文化史','00010001',3,'2015年秋季','000101',80,'0001');
+INSERT 
+INTO T_Course
+VALUES('20150107','高等数学','00010001',1,'2015年春季','000102',150,'0002');
+INSERT 
+INTO T_Course
+VALUES('20150206','计算机图形学','00010001',1,'2015年秋季','000102',80,'0002');
+INSERT 
+INTO T_Course
+VALUES('20150108','离散数学','00020001',1,'2015年春季','000201',120,'0002');
+INSERT 
+INTO T_Course
+VALUES('20150209','机械制图','00020001',3,'2015年秋季','000201',120,'0003');
+
+
+INSERT 
+INTO T_Sc
+VALUES('20150101','201300010001',98);
+INSERT 
+INTO T_Sc
+VALUES('20150102','201300010001',88);
+INSERT 
+INTO T_Sc
+VALUES('20150203','201300010001',94);
+INSERT 
+INTO T_Sc
+VALUES('20150104','201300010001',78);
+INSERT 
+INTO T_Sc
+VALUES('20150205','201300010001',71);
+
+INSERT 
+INTO T_Sc
+VALUES('20150101','201300010002',98);
+INSERT 
+INTO T_Sc
+VALUES('20150102','201300010002',85);
+INSERT 
+INTO T_Sc
+VALUES('20150203','201300010002',95);
+INSERT 
+INTO T_Sc
+VALUES('20150104','201300010002',58);
+INSERT 
+INTO T_Sc
+VALUES('20150205','201300010002',61);
+
+INSERT 
+INTO T_Sc
+VALUES('20150101','201300010003',58);
+INSERT 
+INTO T_Sc
+VALUES('20150102','201300010003',68);
+INSERT 
+INTO T_Sc
+VALUES('20150203','201300010003',74);
+INSERT 
+INTO T_Sc
+VALUES('20150104','201300010003',88);
+INSERT 
+INTO T_Sc
+VALUES('20150205','201300010003',78);
+
+INSERT 
+INTO T_Sc
+VALUES('20150101','201300010004',91);
+INSERT 
+INTO T_Sc
+VALUES('20150102','201300010004',81);
+INSERT 
+INTO T_Sc
+VALUES('20150203','201300010004',91);
+INSERT 
+INTO T_Sc
+VALUES('20150104','201300010004',68);
+INSERT 
+INTO T_Sc
+VALUES('20150205','201300010004',77);
+
+INSERT 
+INTO T_Sc
+VALUES('20150101','201300010005',78);
+INSERT 
+INTO T_Sc
+VALUES('20150102','201300010005',76);
+INSERT 
+INTO T_Sc
+VALUES('20150203','201300010005',74);
+INSERT 
+INTO T_Sc
+VALUES('20150104','201300010005',71);
+INSERT 
+INTO T_Sc
+VALUES('20150205','201300010005',73);
+
+INSERT 
+INTO T_Sc
+VALUES('20150107','201300010006',68);
+INSERT 
+INTO T_Sc
+VALUES('20150206','201300010006',79);
+
+INSERT 
+INTO T_Sc
+VALUES('20150107','201300010007',88);
+INSERT 
+INTO T_Sc
+VALUES('20150206','201300010007',79);
+
+INSERT 
+INTO T_Sc
+VALUES('20150107','201300010008',98);
+INSERT 
+INTO T_Sc
+VALUES('20150206','201300010008',89);
+
+INSERT 
+INTO T_Sc
+VALUES('20150107','201300010009',61);
+INSERT 
+INTO T_Sc
+VALUES('20150206','201300010009',73);
+
+INSERT 
+INTO T_Sc
+VALUES('20150107','201300010010',66);
+INSERT 
+INTO T_Sc
+VALUES('20150206','201300010010',76);
+
+
+
+INSERT 
+INTO T_Sc
+VALUES('20150108','201300020001',95);
+INSERT 
+INTO T_Sc
+VALUES('20150209','201300020001',75);
+
+INSERT 
+INTO T_Sc
+VALUES('20150108','201300020002',55);
+INSERT 
+INTO T_Sc
+VALUES('20150209','201300020002',45);
+
+
+INSERT 
+INTO T_Sc
+VALUES('20150108','201300020003',85);
+INSERT 
+INTO T_Sc
+VALUES('20150209','201300020003',78);
+
+
+INSERT 
+INTO T_Sc
+VALUES('20150108','201300020004',95);
+INSERT 
+INTO T_Sc
+VALUES('20150209','201300020004',85);
+
+
+INSERT 
+INTO T_Sc
+VALUES('20150108','201300020005',78);
+INSERT 
+INTO T_Sc
+VALUES('20150209','201300020005',85);
+
+
+INSERT 
+INTO T_Sc
+VALUES('20150108','201300020006',98);
+INSERT 
+INTO T_Sc
+VALUES('20150209','201300020006',89);
+
+INSERT 
+INTO T_Sc
+VALUES('20150108','201300020007',91);
+INSERT 
+INTO T_Sc
+VALUES('20150209','201300020007',78);
+
+
+
+
+INSERT 
+INTO T_Teacher
+VALUES('00010001','赵菁菁','0001','0001','zjj123');
+INSERT 
+INTO T_Teacher
+VALUES('00020001','李勇','0002','0002','zy123');
+
+
+INSERT 
+INTO T_Eadm
+VALUES('0001','张勇','zy123');
+INSERT 
+INTO T_Eadm
+VALUES('0002','李小晨','lxc123');
+INSERT 
+INTO T_Eadm
+VALUES('0003','张丰毅','zfy123');
+
+
+INSERT 
+INTO T_Sadm
+VALUES('1001','刘星耀','lxy123');
+INSERT 
+INTO T_Sadm
+VALUES('1002','李贵','lg123');
+
+
+INSERT 
+INTO T_Status
+VALUES('2015年春季','2015年秋季','true','true');
+
+--delete from T_Sc where Sno='201300010001' 删除学号=‘’的选课信息
+--delete from T_Student where Ssex='男'
+--delete from T_Teacher where Tno='00010001'
+--触发器1 删除学生信息 删除对应选课信息
+go
+create trigger tri_student
+on T_Student
+after delete
+as
+delete from T_Sc
+where Sno in
+(select Sno from deleted)
+--触发器2 删除老师信息 删除对应教课信息 和对应教的课的选课信息
+
+go
+create trigger tri_teacher
+on T_Teacher
+after delete
+as
+delete from T_Course
+where Tno in
+(select Tno from deleted)
+delete from T_Sc
+where Cno in
+(select Cno from T_Course where Tno in(select Tno from deleted))
+

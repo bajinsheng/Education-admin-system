@@ -1,0 +1,182 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>教务管理系统</title>
+    <meta name="keywords" content="index" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="~/assets/i/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="~/assets/i/app-icon72x72@2x.png" />
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link href="~/assets/css/amazeui.min.css" rel="stylesheet" />
+    <link href="~/assets/css/admin.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        function ClickRemoveChangeCode() {
+            var code = $("#imgCode").attr("src");
+            $("#imgCode").attr("src", code + "1");
+        }
+    </script>
+    <style>
+        .header {
+            text-align: center;
+        }
+
+            .header h1 {
+                font-size: 200%;
+                color: #333;
+                margin-top: 30px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+    </style>
+    @if ((int)ViewData["back"] == 1)
+    {
+        <script type="text/javascript">
+            $(function () {//$表示Dom加载完成后立即执行
+                alert("用户名或密码错误！");
+            });
+        </script>
+    }
+    else if ((int)ViewData["back"] == 2)
+    {
+        <script type="text/javascript">
+            $(function () {//$表示Dom加载完成后立即执行
+                alert("验证码错误！");
+            });
+        </script>
+    }
+    else if ((int)ViewData["back"] == 3)
+    {
+        <script type="text/javascript">
+            $(function () {//$表示Dom加载完成后立即执行
+                alert("超过用户登录时间，请重新登陆！");
+            });
+        </script>
+    }
+</head>
+<body>
+
+    <div class="header">
+        <div class="am-g">
+            <h1>教务管理系统</h1>
+            <p>山东大学（威海）</p>
+        </div>
+        <hr />
+    </div>
+    <div class="admin-content">
+
+        <div class="am-tabs am-margin" data-am-tabs>
+            <ul class="am-tabs-nav am-nav am-nav-tabs">
+                <li><a href="#tab2">学生登陆</a></li>
+                <li><a href="#tab3">教师登陆</a></li>
+            </ul>
+            <div class="am-tabs-bd">               
+                <div class="am-tab-panel am-fade" id="tab2">                   
+                    <form class="am-form" action="/Student/Index" method="post">
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                学号
+                            </div>
+                            <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+                                <input type="number" class="am-input-sm" name="UserName" required="required">
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                密码
+                            </div>
+                            <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+                                <input type="password" class="am-input-sm" name="Password">
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                验证码
+                            </div>
+                            <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+                                <img src="/Home/CheckCode?ID=1" id="imgCode" alt="单击可刷新" onclick="ClickRemoveChangeCode()" />
+                                <div style="float:right; margin-top: 5px;">
+                                    <a href="javascript:void(0)" onclick="ClickRemoveChangeCode();return false;">看不清，换一张</a>
+                                </div>
+                                <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+                                    <input type="number" required="required" class="am-input-sm" name="ValidCode">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                <input type="submit" class="am-btn am-btn-primary am-btn-xs" value="登录" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="am-tab-panel am-fade" id="tab3">
+                    <form class="am-form" action="/Teacher/Index" method="post">
+                        <div class="am-g am-margin-top-sm">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                教工号
+                            </div>
+                            <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                                <input type="number" class="am-input-sm" name="UserName">
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top-sm">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                密码
+                            </div>
+                            <div class="am-u-sm-8 am-u-md-4 am-u-end">
+                                <input type="password" class="am-input-sm" name="Password">
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                验证码
+                            </div>
+                            <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+                                <img src="/Home/CheckCode?ID=1" id="imgCode" alt="单击可刷新" onclick="ClickRemoveChangeCode()" />
+                                <div style="float:right; margin-top: 5px;">
+                                    <a href="javascript:void(0)" onclick="ClickRemoveChangeCode();return false;">看不清，换一张</a>
+                                </div>
+                                <div class="am-u-sm-8 am-u-md-4 am-u-end col-end">
+                                    <input type="number" required="required" class="am-input-sm" name="ValidCode">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="am-g am-margin-top">
+                            <div class="am-u-sm-4 am-u-md-2 am-text-right">
+                                <input type="submit" class="am-btn am-btn-primary am-btn-xs" value="登录" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="~/assets/js/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="~/assets/js/amazeui.min.js"></script>
+    <script src="~/assets/js/app.js"></script>
+
+
+  
+</body>
+</html>
